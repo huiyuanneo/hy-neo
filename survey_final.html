@@ -1169,11 +1169,6 @@
             // Question 4: Variable granularity/attribute difference
 			const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
 			const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
-			if (granularityCheckboxes.length === 0 && attributeMatchCheckboxes.length === 0) {
-    			showAlert('Please answer question 4 about granularity/attribute match.', 'warning');
-    			return null;
-			}
-            const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
             const temporalGranularityCheckboxes = document.querySelectorAll('input[name="temporal_granularity"]:checked');
             const temporalCoverageCheckboxes = document.querySelectorAll('input[name="temporal_coverage"]:checked');
             const baselineShiftCheckboxes = document.querySelectorAll('input[name="baseline_shift"]:checked');
@@ -1625,17 +1620,13 @@
                 return null;
             }
 
-            const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
-            if (granularityCheckboxes.length === 0) {
-                showAlert('Please answer question 4 about granularity match.', 'warning');
-                return null;
-            }
-
-            const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
-            if (attributeMatchCheckboxes.length === 0) {
-                showAlert('Please answer question 5 about attribute match.', 'warning');
-                return null;
-            }
+            // Question 4: Variable granularity/attribute difference (combined validation)
+			const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
+			const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
+			if (granularityCheckboxes.length === 0 && attributeMatchCheckboxes.length === 0) {
+    			showAlert('Please answer question 4 about granularity/attribute match.', 'warning');
+    			return null;
+			}
 
             const temporalGranularityCheckboxes = document.querySelectorAll('input[name="temporal_granularity"]:checked');
             if (temporalGranularityCheckboxes.length === 0) {
