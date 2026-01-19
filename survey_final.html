@@ -485,11 +485,11 @@
                         <label for="less_granular">Yes, provided less granular data</label>
                     </div>
 					<div class="checkbox-group">
-                        <input type="checkbox" name="granularity_match" value="Yes, data on additional attributes were provided" id="attribute_additional">
+                        <input type="checkbox" name="attribute_match" value="Yes, data on additional attributes were provided" id="attribute_additional">
                         <label for="attribute_additional">Yes, data on additional attributes were provided</label>
                     </div>
                     <div class="checkbox-group">
-                        <input type="checkbox" name="granularity_match" value="Yes, data on requested attributes were missing" id="attribute_missing">
+                        <input type="checkbox" name="attribute_match" value="Yes, data on requested attributes were missing" id="attribute_missing">
                         <label for="attribute_missing">Yes, data on requested attributes were missing</label>
                     </div>
                     <div class="checkbox-group">
@@ -1166,7 +1166,13 @@
         function getCurrentFormState() {
             const dataRequestCheckboxes = document.querySelectorAll('input[name="data_request"]:checked');
             const dataPointsProvided = document.getElementById('data_points_provided').value.trim();
-            const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
+            // Question 4: Variable granularity/attribute difference
+			const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
+			const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
+			if (granularityCheckboxes.length === 0 && attributeMatchCheckboxes.length === 0) {
+    			showAlert('Please answer question 4 about granularity/attribute match.', 'warning');
+    			return null;
+			}
             const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
             const temporalGranularityCheckboxes = document.querySelectorAll('input[name="temporal_granularity"]:checked');
             const temporalCoverageCheckboxes = document.querySelectorAll('input[name="temporal_coverage"]:checked');
@@ -1183,8 +1189,8 @@
             return {
                 dataRequest: Array.from(dataRequestCheckboxes).map(cb => cb.value),
                 dataPointsProvided: dataPointsProvided || '',
-                granularityMatch: Array.from(granularityCheckboxes).map(cb => cb.value),
-                attributeMatch: Array.from(attributeMatchCheckboxes).map(cb => cb.value),
+                granularityMatch: Array.from(granularityCheckboxes).map(cb => cb.value).join('; '),
+				attributeMatch: Array.from(attributeMatchCheckboxes).map(cb => cb.value).join('; '),
                 temporalGranularity: Array.from(temporalGranularityCheckboxes).map(cb => cb.value),
                 temporalCoverage: Array.from(temporalCoverageCheckboxes).map(cb => cb.value),
                 baselineShift: Array.from(baselineShiftCheckboxes).map(cb => cb.value),
