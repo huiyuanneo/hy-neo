@@ -483,13 +483,13 @@
                     <div class="checkbox-group">
                         <input type="checkbox" name="granularity_match" value="Yes, provided less granular data" id="less_granular">
                         <label for="less_granular">Yes, provided less granular data</label>
-                    </div>
-					<div class="checkbox-group">
-                        <input type="checkbox" name="attribute_match" value="Yes, data on additional attributes were provided" id="attribute_additional">
+		    </div>
+		    <div class="checkbox-group">
+                        <input type="checkbox" name="granularity_match" value="Yes, data on additional attributes were provided" id="attribute_additional">
                         <label for="attribute_additional">Yes, data on additional attributes were provided</label>
                     </div>
                     <div class="checkbox-group">
-                        <input type="checkbox" name="attribute_match" value="Yes, data on requested attributes were missing" id="attribute_missing">
+                        <input type="checkbox" name="granularity_match" value="Yes, data on requested attributes were missing" id="attribute_missing">
                         <label for="attribute_missing">Yes, data on requested attributes were missing</label>
                     </div>
                     <div class="checkbox-group">
@@ -1166,9 +1166,7 @@
         function getCurrentFormState() {
             const dataRequestCheckboxes = document.querySelectorAll('input[name="data_request"]:checked');
             const dataPointsProvided = document.getElementById('data_points_provided').value.trim();
-            // Question 4: Variable granularity/attribute difference
-			const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
-			const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
+            const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
             const temporalGranularityCheckboxes = document.querySelectorAll('input[name="temporal_granularity"]:checked');
             const temporalCoverageCheckboxes = document.querySelectorAll('input[name="temporal_coverage"]:checked');
             const baselineShiftCheckboxes = document.querySelectorAll('input[name="baseline_shift"]:checked');
@@ -1184,8 +1182,7 @@
             return {
                 dataRequest: Array.from(dataRequestCheckboxes).map(cb => cb.value),
                 dataPointsProvided: dataPointsProvided || '',
-                granularityMatch: Array.from(granularityCheckboxes).map(cb => cb.value).join('; '),
-				attributeMatch: Array.from(attributeMatchCheckboxes).map(cb => cb.value).join('; '),
+                granularityMatch: Array.from(granularityCheckboxes).map(cb => cb.value),
                 temporalGranularity: Array.from(temporalGranularityCheckboxes).map(cb => cb.value),
                 temporalCoverage: Array.from(temporalCoverageCheckboxes).map(cb => cb.value),
                 baselineShift: Array.from(baselineShiftCheckboxes).map(cb => cb.value),
@@ -1218,13 +1215,6 @@
             if (formState.granularityMatch && formState.granularityMatch.length > 0) {
                 formState.granularityMatch.forEach(value => {
                     const checkbox = document.querySelector(`input[name="granularity_match"][value="${value}"]`);
-                    if (checkbox) checkbox.checked = true;
-                });
-            }
-
-            if (formState.attributeMatch && formState.attributeMatch.length > 0) {
-                formState.attributeMatch.forEach(value => {
-                    const checkbox = document.querySelector(`input[name="attribute_match"][value="${value}"]`);
                     if (checkbox) checkbox.checked = true;
                 });
             }
@@ -1597,7 +1587,6 @@
                     dataPointsProvided: 'N/A',
                     allVariables: 'N/A',
                     granularityMatch: 'N/A',
-                    attributeMatch: 'N/A',
                     temporalGranularity: 'N/A',
                     temporalCoverage: 'N/A',
                     baselineShift: 'N/A',
@@ -1620,13 +1609,11 @@
                 return null;
             }
 
-            // Question 4: Variable granularity/attribute difference (combined validation)
-			const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
-			const attributeMatchCheckboxes = document.querySelectorAll('input[name="attribute_match"]:checked');
-			if (granularityCheckboxes.length === 0 && attributeMatchCheckboxes.length === 0) {
-    			showAlert('Please answer question 4 about granularity/attribute match.', 'warning');
-    			return null;
-			}
+            const granularityCheckboxes = document.querySelectorAll('input[name="granularity_match"]:checked');
+            if (granularityCheckboxes.length === 0) {
+                showAlert('Please answer question 4 about granularity match.', 'warning');
+                return null;
+            }
 
             const temporalGranularityCheckboxes = document.querySelectorAll('input[name="temporal_granularity"]:checked');
             if (temporalGranularityCheckboxes.length === 0) {
@@ -1686,7 +1673,6 @@
                 dataPointsProvided: dataPointsProvided || '',
                 allVariables: Array.from(allVariablesCheckboxes).map(cb => cb.value).join('; '),
                 granularityMatch: Array.from(granularityCheckboxes).map(cb => cb.value).join('; '),
-                attributeMatch: Array.from(attributeMatchCheckboxes).map(cb => cb.value).join('; '),
                 temporalGranularity: Array.from(temporalGranularityCheckboxes).map(cb => cb.value).join('; '),
                 temporalCoverage: Array.from(temporalCoverageCheckboxes).map(cb => cb.value).join('; '),
                 baselineShift: Array.from(baselineShiftCheckboxes).map(cb => cb.value).join('; '),
