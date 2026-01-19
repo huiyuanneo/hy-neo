@@ -484,20 +484,7 @@
                         <input type="checkbox" name="granularity_match" value="Yes, provided less granular data" id="less_granular">
                         <label for="less_granular">Yes, provided less granular data</label>
                     </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="granularity_match" value="N.A." id="granularity_na">
-                        <label for="granularity_na">N.A.</label>
-                    </div>
-                </div>
-
-                <!-- Question 5: Attribute data difference -->
-                <div class="question-block">
-                    <label><strong>5. Was there a variable where the attribute data provided differed from that requested?</strong></label><br>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="attribute_match" value="No, fully matched" id="attribute_no">
-                        <label for="attribute_no">No, fully matched</label>
-                    </div>
-                    <div class="checkbox-group">
+					<div class="checkbox-group">
                         <input type="checkbox" name="attribute_match" value="Yes, data on additional attributes were provided" id="attribute_additional">
                         <label for="attribute_additional">Yes, data on additional attributes were provided</label>
                     </div>
@@ -506,14 +493,14 @@
                         <label for="attribute_missing">Yes, data on requested attributes were missing</label>
                     </div>
                     <div class="checkbox-group">
-                        <input type="checkbox" name="attribute_match" value="N.A." id="attribute_na">
-                        <label for="attribute_na">N.A.</label>
+                        <input type="checkbox" name="granularity_match" value="N.A." id="granularity_na">
+                        <label for="granularity_na">N.A.</label>
                     </div>
                 </div>
                 
-                <!-- Question 6: Temporal granularity difference -->
+                <!-- Question 5: Temporal granularity difference -->
                 <div class="question-block">
-                    <label><strong>6. Was there a variable where the temporal granularity of the data provided differed from that requested (e.g. annual instead of monthly data)?</strong></label><br>
+                    <label><strong>5. Was there a variable where the temporal granularity of the data provided differed from that requested (e.g. annual instead of monthly data)?</strong></label><br>
                     <div class="checkbox-group">
                         <input type="checkbox" name="temporal_granularity" value="No, fully matched" id="temporal_fully_matched">
                         <label for="temporal_fully_matched">No, fully matched</label>
@@ -532,9 +519,9 @@
                     </div>
                 </div>
                 
-                <!-- Question 7: Temporal coverage shift -->
+                <!-- Question 6: Temporal coverage shift -->
                 <div class="question-block">
-                    <label><strong>7. Did the government's reply shift or redefine the temporal coverage of the data (e.g. provides "data since 2010" when MP asked for "2015–2018")?</strong></label><br>
+                    <label><strong>6. Did the government's reply shift or redefine the temporal coverage of the data (e.g. provides "data since 2010" when MP asked for "2015–2018")?</strong></label><br>
                     <div class="checkbox-group">
                         <input type="checkbox" name="temporal_coverage" value="No, fully matched" id="temporal_fully">
                         <label for="temporal_fully">No, fully matched</label>
@@ -561,9 +548,9 @@
                     </div>
                 </div>
                 
-                <!-- Question 8: Comparative statistic difference -->
+                <!-- Question 7: Comparative statistic difference -->
                 <div class="question-block">
-                    <label><strong>8. Was there a variable where the comparative statistic of the data provided differed from that requested (e.g., providing percentage instead of absolute number, or different reference year)?</strong></label><br>
+                    <label><strong>7. Was there a variable where the comparative statistic of the data provided differed from that requested (e.g., providing percentage instead of absolute number, or different reference year)?</strong></label><br>
 		    <div class="checkbox-group">
                         <input type="checkbox" name="baseline_shift" value="No, comparative statistic did not change" id="baseline_no">
                         <label for="baseline_no">No, comparative statistic did not change</label>
@@ -578,9 +565,9 @@
                     </div>
                 </div>
                 
-                <!-- Question 9: Variable redefinition -->
+                <!-- Question 8: Variable redefinition -->
                 <div class="question-block">
-                    <label><strong>9. Was there a variable where the government redefined or reconceptualized the data or indicator in their answer? (e.g., MP asked for "poverty" but answer gives "low-income households")</strong></label><br>
+                    <label><strong>8. Was there a variable where the government redefined or reconceptualized the data or indicator in their answer? (e.g., MP asked for "poverty" but answer gives "low-income households")</strong></label><br>
                     <div class="checkbox-group">
                         <input type="checkbox" name="variable_redefined" value="No, variable definition matches" id="var_redef_no">
                         <label for="var_redef_no">No, variable definition matches</label>
@@ -595,15 +582,15 @@
                     </div>
                 </div>
                 
-                <!-- Question 10: What was changed or missing -->
+                <!-- Question 9: What was changed or missing -->
                 <div class="question-block">
-                    <label for="what_changed"><strong>10. What was changed or missing?</strong></label><br>
+                    <label for="what_changed"><strong>9. What was changed or missing?</strong></label><br>
                     <input type="text" id="what_changed" class="text-input" placeholder="Enter description of what was changed or missing">
                 </div>
                 
-                <!-- Question 11: All parts answered -->
+                <!-- Question 10: All parts answered -->
                 <div class="question-block">
-                    <label><strong>11. Did the government answer all parts of the questions?</strong></label><br>
+                    <label><strong>10. Did the government answer all parts of the questions?</strong></label><br>
                     <div class="checkbox-group">
                         <input type="checkbox" name="all_parts" value="Yes, fully answered" id="all_parts_yes">
                         <label for="all_parts_yes">Yes, fully answered</label>
@@ -618,9 +605,9 @@
                     </div>
                 </div>
                 
-                <!-- Question 12: Thematically answers question -->
+                <!-- Question 11: Thematically answers question -->
                 <div class="question-block">
-                    <label><strong>12. Thematically, does the government's response answer the question?</strong></label><br>
+                    <label><strong>11. Thematically, does the government's response answer the question?</strong></label><br>
                     <div class="checkbox-group">
                         <input type="checkbox" name="thematic_answer" value="Yes" id="thematic_yes">
                         <label for="thematic_yes">Yes</label>
@@ -635,9 +622,9 @@
                     </div>
                 </div>
                 
-                <!-- Question 13: Justification for withholding -->
+                <!-- Question 12: Justification for withholding -->
                 <div class="question-block">
-                    <label><strong>13. Did the government provide a justification for withholding or altering data?</strong></label><br>
+                    <label><strong>12. Did the government provide a justification for withholding or altering data?</strong></label><br>
                     <div class="checkbox-group">
                         <input type="checkbox" name="justification" value="No justification provided" id="just_none">
                         <label for="just_none">No justification provided</label>
@@ -672,15 +659,15 @@
                     </div>
                 </div>
                 
-                <!-- Question 14: Other notes -->
+                <!-- Question 13: Other notes -->
                 <div class="question-block">
-                    <label for="other_notes"><strong>14. Any other notes or remarks on this parliamentary exchange.</strong></label><br>
+                    <label for="other_notes"><strong>13. Any other notes or remarks on this parliamentary exchange.</strong></label><br>
                     <textarea id="other_notes" class="text-input" rows="4" placeholder="Enter any additional notes or remarks"></textarea>
                 </div>
 
-                <!-- Question 15: PQ Topic -->
+                <!-- Question 14: PQ Topic -->
                 <div class="question-block">
-                    <label for="pq_topic"><strong>15. What was the topic discussed?</strong></label><br>
+                    <label for="pq_topic"><strong>14. What was the topic discussed?</strong></label><br>
                     <textarea id="pq_topic" class="text-input" rows="4" placeholder="State the topic discussed"></textarea>
                 </div>
                 
